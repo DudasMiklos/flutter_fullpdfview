@@ -262,8 +262,8 @@
 
 - (void)setZoom:(FlutterMethodCall*)call result:(FlutterResult)result {
     NSDictionary<NSString*, NSNumber*>* arguments = [call arguments];
-    NSNumber* newZoom = arguments[@"newzoom"];
-    _pdfView.scaleFactor = newZoom
+    float newZoom = [arguments[@"newzoom"] floatValue];
+    _pdfView.scaleFactor = newZoom;
     result(nil);
 }
 
