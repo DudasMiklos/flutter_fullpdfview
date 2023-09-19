@@ -1,4 +1,4 @@
-package com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.scroll;
+package com.github.tranvanphay.flutter_fullpdfview.native_lib.scroll;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.github.tranvanphay.flutter_fullpdfview_fork.R;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.PDFView;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.Util;
+import com.github.tranvanphay.flutter_fullpdfview.R;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.PDFView;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Util;
 
 
 public class DefaultScrollHandle extends RelativeLayout implements ScrollHandle {

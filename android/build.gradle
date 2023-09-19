@@ -1,4 +1,4 @@
-group 'com.github.tranvanphay.flutter_fullpdfview_fork'
+group 'com.github.tranvanphay.flutter_fullpdfview'
 version '1.0.0'
 
 buildscript {

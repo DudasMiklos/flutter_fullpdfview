@@ -1,4 +1,4 @@
-# flutter_fullpdfview_fork
+# flutter_fullpdfview
 
 Native PDF View for iOS and Android fork from https://github.com/arnaudelub/flutter_fullpdfview
 
@@ -10,7 +10,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  flutter_fullpdfview_fork: latest_version
+  flutter_fullpdfview: latest_version
 ```
 
 ### 2. Install it
@@ -37,7 +37,7 @@ with the key `io.flutter.embedded_views_preview` and the value `YES`.
 Now in your Dart code, you can use:
 
 ```
-import 'package:flutter_fullpdfview_fork/flutter_fullpdfview_fork.dart';
+import 'package:flutter_fullpdfview/flutter_fullpdfview.dart';
 ```
 
 ## Options

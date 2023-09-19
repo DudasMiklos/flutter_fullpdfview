@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.tranvanphay.flutter_fullpdfview_fork.native_lib;
+package com.github.tranvanphay.flutter_fullpdfview.native_lib;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -24,8 +24,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.exception.PageRenderingException;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.model.PagePart;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.exception.PageRenderingException;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.model.PagePart;
 
 
 /**

@@ -1,7 +1,7 @@
-package com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.scroll;
+package com.github.tranvanphay.flutter_fullpdfview.native_lib.scroll;
 
 
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.PDFView;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.PDFView;
 
 public interface ScrollHandle {
 

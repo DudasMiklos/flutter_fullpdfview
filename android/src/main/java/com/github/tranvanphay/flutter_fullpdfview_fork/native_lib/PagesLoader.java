@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.tranvanphay.flutter_fullpdfview_fork.native_lib;
+package com.github.tranvanphay.flutter_fullpdfview.native_lib;
 
-import static com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.Constants.Cache.CACHE_SIZE;
-import static com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.Constants.PRELOAD_OFFSET;
+import static com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Constants.Cache.CACHE_SIZE;
+import static com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Constants.PRELOAD_OFFSET;
 
 import android.graphics.RectF;
 
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.Constants;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.MathUtils;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.Util;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Constants;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.MathUtils;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Util;
 import com.shockwave.pdfium.util.SizeF;
 
 import java.util.LinkedList;

@@ -1,18 +1,18 @@
-package com.github.tranvanphay.flutter_fullpdfview_fork;
+package com.github.tranvanphay.flutter_fullpdfview;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.PDFView;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnErrorListener;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnPageChangeListener;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnPageErrorListener;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnRenderListener;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnZoomChangeListener;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.Constants;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.FitPolicy;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.PDFView;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnErrorListener;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnPageChangeListener;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnPageErrorListener;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnRenderListener;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnZoomChangeListener;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Constants;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.FitPolicy;
 
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;

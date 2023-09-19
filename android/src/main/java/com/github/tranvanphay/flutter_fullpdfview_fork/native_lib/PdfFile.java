@@ -11,7 +11,7 @@
  * express or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.tranvanphay.flutter_fullpdfview_fork.native_lib;
+package com.github.tranvanphay.flutter_fullpdfview.native_lib;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -19,9 +19,9 @@ import android.graphics.RectF;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.exception.PageRenderingException;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.FitPolicy;
-import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.PageSizeCalculator;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.exception.PageRenderingException;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.FitPolicy;
+import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.PageSizeCalculator;
 import com.shockwave.pdfium.PdfDocument;
 import com.shockwave.pdfium.PdfiumCore;
 import com.shockwave.pdfium.util.Size;
