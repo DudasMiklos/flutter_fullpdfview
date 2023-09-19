@@ -53,7 +53,7 @@
               binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
     if ([super init]) {
         _viewId = viewId;
-        NSString* channelName = [NSString stringWithFormat:@"plugins.dudasmiklos.io/pdfview_%lld", viewId];
+        NSString* channelName = [NSString stringWithFormat:@"plugins.DudasMiklos.io/pdfview_%lld", viewId];
         _channel = [FlutterMethodChannel methodChannelWithName:channelName binaryMessenger:messenger];
 
         _pdfView = [[PDFView alloc] initWithFrame:frame];

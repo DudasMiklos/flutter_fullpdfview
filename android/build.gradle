@@ -1,4 +1,4 @@
-group 'com.github.dudasmiklos.flutter_fullpdfview'
+group 'com.github.DudasMiklos.flutter_fullpdfview'
 version '1.0.0'
 
 buildscript {

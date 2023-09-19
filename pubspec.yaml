@@ -1,8 +1,7 @@
 name: flutter_fullpdfview
-description: A Pdf Viewer for Android including fit policy. Based on flutter_pdfview_fork from phaytran.
+description: A new Flutter project.
 version: 1.0.5
-verified publisher: phaytran.tech
-homepage: https://github.com/dudasmiklos/flutter_fullpdfview
+homepage: https://github.com/DudasMiklos/flutter_fullpdfview
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -21,14 +20,14 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.github.dudasmiklos.flutter_fullpdfview
+        package: com.github.DudasMiklos.flutter_fullpdfview
         pluginClass: FlutterFullpdfviewPlugin
       ios:
         pluginClass: FlutterFullpdfviewPlugin
 
 # flutter:
 #   plugin:
-#     androidPackage: com.github.dudasmiklos.flutter_fullpdfview
+#     androidPackage: com.github.DudasMiklos.flutter_fullpdfview
 #     pluginClass: FlutterFullpdfviewPlugin
 
 # flutter:
@@ -37,6 +36,6 @@ flutter:
 #       ios:
 #         pluginClass: FlutterFullpdfviewPlugin
 #       android:
-#         package: com.github.dudasmiklos.flutter_fullpdfview
+#         package: com.github.DudasMiklos.flutter_fullpdfview
 #         pluginClass: FlutterFullpdfviewPlugin
     
