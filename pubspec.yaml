@@ -21,6 +21,7 @@ flutter:
     platforms:
       android:
         package: com.github.DudasMiklos.flutter_fullpdfview
+        androidPackage: com.github.DudasMiklos.flutter_fullpdfview
         pluginClass: FlutterFullpdfviewPlugin
       ios:
         pluginClass: FlutterFullpdfviewPlugin
