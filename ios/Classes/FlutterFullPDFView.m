@@ -53,7 +53,7 @@
               binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
     if ([super init]) {
         _viewId = viewId;
-        NSString* channelName = [NSString stringWithFormat:@"plugins.arnaudelub.io/pdfview_%lld", viewId];
+        NSString* channelName = [NSString stringWithFormat:@"plugins.tranvanphay.io/pdfview_%lld", viewId];
         _channel = [FlutterMethodChannel methodChannelWithName:channelName binaryMessenger:messenger];
 
         _pdfView = [[PDFView alloc] initWithFrame:frame];
@@ -262,8 +262,8 @@
 
 - (void)setZoom:(FlutterMethodCall*)call result:(FlutterResult)result {
     NSDictionary<NSString*, NSNumber*>* arguments = [call arguments];
-    float newZoom = [arguments[@"newzoom"] floatValue];
-    _pdfView.scaleFactor = newZoom;
+    NSNumber* newZoom = arguments[@"newzoom"];
+    _pdfView.scaleFactor = newZoom
     result(nil);
 }
 

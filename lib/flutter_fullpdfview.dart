@@ -2,16 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
-typedef PDFViewCreatedCallback = void Function(PDFViewController controller);
-typedef RenderCallback = void Function(int? pages);
-typedef PageChangedCallback = void Function(int? page, int? total);
-typedef ErrorCallback = void Function(dynamic error);
-typedef PageErrorCallback = void Function(int? page, dynamic error);
-typedef LinkHandlerCallback = void Function(String? uri);
-typedef ZoomChangedCallback = void Function(double? zoom);
+typedef void PDFViewCreatedCallback(PDFViewController controller);
+typedef void RenderCallback(int pages);
+typedef void PageChangedCallback(int page, int total);
+typedef void ZoomChangedCallback(double zoom);
+typedef void ErrorCallback(dynamic error);
+typedef void PageErrorCallback(int page, dynamic error);
 
 enum bgcolors { BLACK, WHITE, CYAN, BLUE }
 
@@ -20,8 +19,7 @@ enum FitPolicy { WIDTH, HEIGHT, BOTH }
 class PDFView extends StatefulWidget {
   const PDFView({
     Key? key,
-    this.filePath,
-    this.pdfData,
+    required this.filePath,
     this.onViewCreated,
     this.onRender,
     this.onPageChanged,
@@ -68,10 +66,8 @@ class PDFView extends StatefulWidget {
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
   /// The initial URL to load.
-  final String? filePath;
-  final Uint8List? pdfData;
-
-  final FitPolicy? fitPolicy;
+  final String filePath;
+  final FitPolicy fitPolicy;
   final bool fitEachPage;
   final bool enableSwipe;
   final bool swipeHorizontal;
@@ -94,7 +90,7 @@ class _PDFViewState extends State<PDFView> {
   Widget build(BuildContext context) {
     if (defaultTargetPlatform == TargetPlatform.android) {
       return AndroidView(
-        viewType: 'plugins.arnaudelub.io/pdfview',
+        viewType: 'plugins.tranvanphay.io/pdfview',
         onPlatformViewCreated: _onPlatformViewCreated,
         gestureRecognizers: widget.gestureRecognizers,
         creationParams: _CreationParams.fromWidget(widget).toMap(),
@@ -102,7 +98,7 @@ class _PDFViewState extends State<PDFView> {
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return UiKitView(
-        viewType: 'plugins.arnaudelub.io/pdfview',
+        viewType: 'plugins.tranvanphay.io/pdfview',
         onPlatformViewCreated: _onPlatformViewCreated,
         gestureRecognizers: widget.gestureRecognizers,
         creationParams: _CreationParams.fromWidget(widget).toMap(),
@@ -131,31 +127,27 @@ class _PDFViewState extends State<PDFView> {
 
 class _CreationParams {
   _CreationParams({
-    this.filePath,
-    this.pdfData,
-    this.settings,
+    required this.filePath,
+    required this.settings,
   });
 
   static _CreationParams fromWidget(PDFView widget) {
     return _CreationParams(
       filePath: widget.filePath,
-      pdfData: widget.pdfData,
       settings: _PDFViewSettings.fromWidget(widget),
     );
   }
 
-  final String? filePath;
-  final Uint8List? pdfData;
+  final String filePath;
 
-  final _PDFViewSettings? settings;
+  late _PDFViewSettings settings;
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> params = {
       'filePath': filePath,
-      'pdfData': pdfData,
     };
 
-    params.addAll(settings!.toMap());
+    params.addAll(settings.toMap());
 
     return params;
   }
@@ -177,7 +169,6 @@ class _PDFViewSettings {
     this.displayAsBook,
     this.backgroundColor,
     this.dualPageWithBreak,
-    this.preventLinkNavigation,
   });
 
   static _PDFViewSettings fromWidget(PDFView widget) {
@@ -200,6 +191,8 @@ class _PDFViewSettings {
   }
 
   final bool? enableSwipe;
+  final FitPolicy? fitPolicy;
+  final bool? fitEachPage;
   final bool? swipeHorizontal;
   final String? password;
   final bool? nightMode;
@@ -207,9 +200,6 @@ class _PDFViewSettings {
   final bool? pageFling;
   final bool? pageSnap;
   final int? defaultPage;
-  final FitPolicy? fitPolicy;
-  final bool? fitEachPage;
-  final bool? preventLinkNavigation;
   final bool? dualPageMode;
   final bool? displayAsBook;
   final bool? dualPageWithBreak;
@@ -281,7 +271,7 @@ class PDFViewController {
   PDFViewController._(
     int id,
     this._widget,
-  ) : _channel = MethodChannel('plugins.arnaudelub.io/pdfview_$id') {
+  ) : _channel = MethodChannel('plugins.tranvanphay.io/pdfview_$id') {
     _settings = _PDFViewSettings.fromWidget(_widget);
     _channel.setMethodCallHandler(_onMethodCall);
   }
@@ -293,6 +283,7 @@ class PDFViewController {
   PDFView _widget;
 
   Future<bool?> _onMethodCall(MethodCall call) async {
+    print([call.method, call.arguments]);
     switch (call.method) {
       case 'onRender':
         if (_widget.onRender != null) {
@@ -303,9 +294,7 @@ class PDFViewController {
       case 'onPageChanged':
         if (_widget.onPageChanged != null) {
           _widget.onPageChanged!(
-            call.arguments['page'] as int,
-            call.arguments['total'] as int,
-          );
+              call.arguments['page'] as int, call.arguments['total'] as int);
         }
 
         return null;
@@ -333,73 +322,73 @@ class PDFViewController {
         '${call.method} was invoked but has no handler');
   }
 
-  Future<double?> getPageWidth(int page) async {
-    final double? pageWidth = await _channel
-        .invokeMethod('pageWidth', <String, dynamic>{'page': page});
+  Future<double> getPageWidth(int page) async {
+    final double pageWidth = await _channel
+        .invokeMethod('pageWidth', <String, dynamic>{'page': page}) as double;
     return pageWidth;
   }
 
-  Future<double?> getPageHeight(int page) async {
-    final double? pageHeight = await _channel
-        .invokeMethod('pageHeight', <String, dynamic>{'page': page});
+  Future<double> getPageHeight(int page) async {
+    final double pageHeight = await _channel
+        .invokeMethod('pageHeight', <String, dynamic>{'page': page}) as double;
     return pageHeight;
   }
 
-  Future<double?> getScreenWidth() async {
-    final double? screenWidth = await _channel.invokeMethod('screenWidth');
+  Future<double> getScreenWidth() async {
+    final double screenWidth =
+        await _channel.invokeMethod('screenWidth') as double;
     return screenWidth;
   }
 
-  Future<double?> getScreenHeight() async {
-    final double? screenHeight = await _channel.invokeMethod('screenHeight');
+  Future<double> getScreenHeight() async {
+    final double screenHeight =
+        await _channel.invokeMethod('screenHeight') as double;
     return screenHeight;
   }
 
-  Future<int?> getPageCount() async {
-    final int? pageCount = await _channel.invokeMethod('pageCount');
+  Future<int> getPageCount() async {
+    final int pageCount = await _channel.invokeMethod('pageCount') as int;
     return pageCount;
   }
 
-  Future<int?> getCurrentPage() async {
-    final int? currentPage = await _channel.invokeMethod('currentPage');
+  Future<int> getCurrentPage() async {
+    final int currentPage = await _channel.invokeMethod('currentPage') as int;
     return currentPage;
   }
 
-  Future<bool?> setPage(int page) async {
-    final bool? isSet =
-        await _channel.invokeMethod('setPage', <String, dynamic>{
+  Future<bool> setPage(int page) async {
+    final bool isSet = await _channel.invokeMethod('setPage', <String, dynamic>{
       'page': page,
-    });
+    }) as bool;
     return isSet;
   }
 
-  Future<bool?> setPageWithAnimation(int page) async {
-    final bool? isSet =
+  Future<bool> setPageWithAnimation(int page) async {
+    final bool isSet =
         await _channel.invokeMethod('setPageWithAnimation', <String, dynamic>{
       'page': page,
-    });
+    }) as bool;
     return isSet;
   }
 
-  Future<bool?> resetZoom(int page) async {
-    final bool? isSet =
+  Future<bool> resetZoom(int page) async {
+    final bool isSet =
         await _channel.invokeMethod('resetZoom', <String, dynamic>{
       'page': page,
-    });
+    }) as bool;
     return isSet;
   }
 
-  Future<bool?> setZoom(double zoom) async {
+  Future<bool> setZoom(double zoom) async {
     print("setting zoom to $zoom");
-    final bool? isSet =
-        await _channel.invokeMethod('setZoom', <String, dynamic>{
+    final bool isSet = await _channel.invokeMethod('setZoom', <String, dynamic>{
       'newzoom': zoom,
-    });
+    }) as bool;
     return isSet;
   }
 
-  Future<double?> getZoom() async {
-    final double? zoom = await _channel.invokeMethod('currentZoom');
+  Future<double> getZoom() async {
+    final double zoom = await _channel.invokeMethod('currentZoom') as double;
     return zoom;
   }
 
@@ -410,7 +399,7 @@ class PDFViewController {
 
   Future<void> _updateSettings(_PDFViewSettings setting) async {
     final Map<String, dynamic> updateMap = _settings.updatesMap(setting);
-    if (updateMap.isEmpty) {
+    if (updateMap == null || updateMap.isEmpty) {
       return null;
     }
     _settings = setting;

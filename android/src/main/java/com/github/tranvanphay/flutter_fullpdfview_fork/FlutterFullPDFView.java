@@ -1,14 +1,19 @@
-package com.github.arnaudelub.flutter_fullpdfview;
-
+package com.github.tranvanphay.flutter_fullpdfview_fork;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
-import com.github.arnaudelub.pdfviewer.PDFView;
-import com.github.arnaudelub.pdfviewer.listener.*;
-import com.github.arnaudelub.pdfviewer.util.Constants;
-import com.github.arnaudelub.pdfviewer.util.FitPolicy;
+
+import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.PDFView;
+import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnErrorListener;
+import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnPageChangeListener;
+import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnPageErrorListener;
+import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnRenderListener;
+import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.listener.OnZoomChangeListener;
+import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.Constants;
+import com.github.tranvanphay.flutter_fullpdfview_fork.native_lib.util.FitPolicy;
+
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -25,10 +30,10 @@ public class FlutterFullPDFView implements PlatformView, MethodCallHandler {
 
   @SuppressWarnings("unchecked")
   FlutterFullPDFView(
-      Context context, BinaryMessenger messenger, int id, Map<String, Object> params) {
+          Context context, BinaryMessenger messenger, int id, Map<String, Object> params) {
     pdfView = new PDFView(context, null);
 
-    methodChannel = new MethodChannel(messenger, "plugins.arnaudelub.io/pdfview_" + id);
+    methodChannel = new MethodChannel(messenger, "plugins.tranvanphay.io/pdfview_" + id);
     methodChannel.setMethodCallHandler(this);
 
     if (params.containsKey("filePath")) {
@@ -44,73 +49,73 @@ public class FlutterFullPDFView implements PlatformView, MethodCallHandler {
       boolean dualMode = getBoolean(params, "dualPageMode");
       boolean showCover = getBoolean(params, "showCover");
       pdfView
-          .fromFile(file)
-          .landscapeOrientation(isLandscape)
-          .enableAnnotationRendering(true)
-          .dualPageMode(getBoolean(params, "dualPageMode"))
-          .displayAsBook(showCover)
-          .enableSwipe(getBoolean(params, "enableSwipe"))
-          // .pageFitPolicy(getFitPolicy(params))
-          .pageFitPolicy(FitPolicy.BOTH)
-          .fitEachPage(dualMode ? false : getBoolean(params, "fitEachPage"))
-          .swipeHorizontal(getBoolean(params, "swipeHorizontal"))
-          .password(getString(params, "password"))
-          .nightMode(getBoolean(params, "nightMode"))
-          .autoSpacing(dualMode ? false : getBoolean(params, "autoSpacing"))
-          .pageFling(getBoolean(params, "pageFling"))
-          .pageSnap(getBoolean(params, "pageSnap"))
-          .backgroundColor(getColorFromString(getString(params, "backgroundColor")))
-          .onPageChange(
-              new OnPageChangeListener() {
-                @Override
-                public void onPageChanged(int page, int total) {
-                  Map<String, Object> args = new HashMap<>();
-                  args.put("page", page);
-                  args.put("total", total);
-                  methodChannel.invokeMethod("onPageChanged", args);
-                }
-              })
-           .onZoomChange(
-                   new OnZoomChangeListener(){
-                     @Override
-                     public void onZoomChanged(double zoom) {
-                       Map<String, Object> args = new HashMap<>();
-                       args.put("zoom", zoom);
-                       methodChannel.invokeMethod("onZoomChanged", args);
-                     }
-                   }
-           )
-          .onError(
-              new OnErrorListener() {
-                @Override
-                public void onError(Throwable t) {
-                  Map<String, Object> args = new HashMap<>();
-                  args.put("error", t.toString());
-                  methodChannel.invokeMethod("onError", args);
-                }
-              })
-          .onPageError(
-              new OnPageErrorListener() {
-                @Override
-                public void onPageError(int page, Throwable t) {
-                  Map<String, Object> args = new HashMap<>();
-                  args.put("page", page);
-                  args.put("error", t.toString());
-                  methodChannel.invokeMethod("onPageError", args);
-                }
-              })
-          .onRender(
-              new OnRenderListener() {
-                @Override
-                public void onInitiallyRendered(int pages) {
-                  Map<String, Object> args = new HashMap<>();
-                  args.put("pages", pages);
-                  methodChannel.invokeMethod("onRender", args);
-                }
-              })
-          .enableDoubletap(true)
-          .defaultPage(getInt(params, "defaultPage"))
-          .load();
+              .fromFile(file)
+              .landscapeOrientation(isLandscape)
+              .enableAnnotationRendering(true)
+              .dualPageMode(getBoolean(params, "dualPageMode"))
+              .displayAsBook(showCover)
+              .enableSwipe(getBoolean(params, "enableSwipe"))
+              // .pageFitPolicy(getFitPolicy(params))
+              .pageFitPolicy(FitPolicy.BOTH)
+              .fitEachPage(dualMode ? false : getBoolean(params, "fitEachPage"))
+              .swipeHorizontal(getBoolean(params, "swipeHorizontal"))
+              .password(getString(params, "password"))
+              .nightMode(getBoolean(params, "nightMode"))
+              .autoSpacing(dualMode ? false : getBoolean(params, "autoSpacing"))
+              .pageFling(getBoolean(params, "pageFling"))
+              .pageSnap(getBoolean(params, "pageSnap"))
+              .backgroundColor(getColorFromString(getString(params, "backgroundColor")))
+              .onPageChange(
+                      new OnPageChangeListener() {
+                        @Override
+                        public void onPageChanged(int page, int total) {
+                          Map<String, Object> args = new HashMap<>();
+                          args.put("page", page);
+                          args.put("total", total);
+                          methodChannel.invokeMethod("onPageChanged", args);
+                        }
+                      })
+              .onZoomChange(
+                      new OnZoomChangeListener(){
+                        @Override
+                        public void onZoomChanged(double zoom) {
+                          Map<String, Object> args = new HashMap<>();
+                          args.put("zoom", zoom);
+                          methodChannel.invokeMethod("onZoomChanged", args);
+                        }
+                      }
+              )
+              .onError(
+                      new OnErrorListener() {
+                        @Override
+                        public void onError(Throwable t) {
+                          Map<String, Object> args = new HashMap<>();
+                          args.put("error", t.toString());
+                          methodChannel.invokeMethod("onError", args);
+                        }
+                      })
+              .onPageError(
+                      new OnPageErrorListener() {
+                        @Override
+                        public void onPageError(int page, Throwable t) {
+                          Map<String, Object> args = new HashMap<>();
+                          args.put("page", page);
+                          args.put("error", t.toString());
+                          methodChannel.invokeMethod("onPageError", args);
+                        }
+                      })
+              .onRender(
+                      new OnRenderListener() {
+                        @Override
+                        public void onInitiallyRendered(int pages) {
+                          Map<String, Object> args = new HashMap<>();
+                          args.put("pages", pages);
+                          methodChannel.invokeMethod("onRender", args);
+                        }
+                      })
+              .enableDoubletap(true)
+              .defaultPage(getInt(params, "defaultPage"))
+              .load();
     }
   }
 

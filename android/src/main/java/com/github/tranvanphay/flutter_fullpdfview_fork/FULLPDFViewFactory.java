@@ -1,8 +1,7 @@
-package com.github.arnaudelub.flutter_fullpdfview;
+package com.github.tranvanphay.flutter_fullpdfview_fork;
 
 import android.content.Context;
-import androidx.annotation.Nullable;
-import androidx.annotation.NonNull;
+
 import java.util.Map;
 
 import io.flutter.plugin.common.BinaryMessenger;
@@ -19,10 +18,9 @@ public class FULLPDFViewFactory extends PlatformViewFactory {
     }
 
     @SuppressWarnings("unchecked")
-    @NonNull
     @Override
-    public PlatformView create(@NonNull Context context, int id, @Nullable Object args) {
-        final Map<String, Object> params = (Map<String, Object>) args;
+    public PlatformView create(Context context, int id, Object args) {
+        Map<String, Object> params = (Map<String, Object>) args;
         return new FlutterFullPDFView(context, messenger, id, params);
     }
 }
