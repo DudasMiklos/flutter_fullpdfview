@@ -11,11 +11,11 @@
  * express or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.tranvanphay.flutter_fullpdfview.native_lib;
+package com.github.dudasmiklos.flutter_fullpdfview.native_lib;
 
 import android.os.AsyncTask;
 
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.source.DocumentSource;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.source.DocumentSource;
 import com.shockwave.pdfium.PdfDocument;
 import com.shockwave.pdfium.PdfiumCore;
 import com.shockwave.pdfium.util.Size;

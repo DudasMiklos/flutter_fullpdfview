@@ -1,4 +1,4 @@
-package com.github.tranvanphay.flutter_fullpdfview;
+package com.github.dudasmiklos.flutter_fullpdfview;
 
 import android.content.Context;
 

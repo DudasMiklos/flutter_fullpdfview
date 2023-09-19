@@ -1,4 +1,4 @@
-package com.github.tranvanphay.flutter_fullpdfview;
+package com.github.dudasmiklos.flutter_fullpdfview;
 
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
@@ -8,6 +8,6 @@ public class FlutterFullpdfviewPlugin {
         registrar
                 .platformViewRegistry()
                 .registerViewFactory(
-                        "plugins.tranvanphay.io/pdfview", new FULLPDFViewFactory(registrar.messenger()));
+                        "plugins.dudasmiklos.io/pdfview", new FULLPDFViewFactory(registrar.messenger()));
     }
 }

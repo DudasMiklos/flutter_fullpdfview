@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.tranvanphay.flutter_fullpdfview.native_lib.link;
+package com.github.dudasmiklos.flutter_fullpdfview.native_lib.link;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.PDFView;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.model.LinkTapEvent;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.PDFView;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.model.LinkTapEvent;
 
 
 public class DefaultLinkHandler implements LinkHandler {

@@ -90,7 +90,7 @@ class _PDFViewState extends State<PDFView> {
   Widget build(BuildContext context) {
     if (defaultTargetPlatform == TargetPlatform.android) {
       return AndroidView(
-        viewType: 'plugins.tranvanphay.io/pdfview',
+        viewType: 'plugins.dudasmiklos.io/pdfview',
         onPlatformViewCreated: _onPlatformViewCreated,
         gestureRecognizers: widget.gestureRecognizers,
         creationParams: _CreationParams.fromWidget(widget).toMap(),
@@ -98,7 +98,7 @@ class _PDFViewState extends State<PDFView> {
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return UiKitView(
-        viewType: 'plugins.tranvanphay.io/pdfview',
+        viewType: 'plugins.dudasmiklos.io/pdfview',
         onPlatformViewCreated: _onPlatformViewCreated,
         gestureRecognizers: widget.gestureRecognizers,
         creationParams: _CreationParams.fromWidget(widget).toMap(),
@@ -271,7 +271,7 @@ class PDFViewController {
   PDFViewController._(
     int id,
     this._widget,
-  ) : _channel = MethodChannel('plugins.tranvanphay.io/pdfview_$id') {
+  ) : _channel = MethodChannel('plugins.dudasmiklos.io/pdfview_$id') {
     _settings = _PDFViewSettings.fromWidget(_widget);
     _channel.setMethodCallHandler(_onMethodCall);
   }

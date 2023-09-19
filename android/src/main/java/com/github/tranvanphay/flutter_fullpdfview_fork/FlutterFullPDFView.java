@@ -1,18 +1,18 @@
-package com.github.tranvanphay.flutter_fullpdfview;
+package com.github.dudasmiklos.flutter_fullpdfview;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.PDFView;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnErrorListener;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnPageChangeListener;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnPageErrorListener;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnRenderListener;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.listener.OnZoomChangeListener;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Constants;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.FitPolicy;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.PDFView;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.listener.OnErrorListener;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.listener.OnPageChangeListener;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.listener.OnPageErrorListener;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.listener.OnRenderListener;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.listener.OnZoomChangeListener;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.util.Constants;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.util.FitPolicy;
 
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
@@ -33,7 +33,7 @@ public class FlutterFullPDFView implements PlatformView, MethodCallHandler {
           Context context, BinaryMessenger messenger, int id, Map<String, Object> params) {
     pdfView = new PDFView(context, null);
 
-    methodChannel = new MethodChannel(messenger, "plugins.tranvanphay.io/pdfview_" + id);
+    methodChannel = new MethodChannel(messenger, "plugins.dudasmiklos.io/pdfview_" + id);
     methodChannel.setMethodCallHandler(this);
 
     if (params.containsKey("filePath")) {

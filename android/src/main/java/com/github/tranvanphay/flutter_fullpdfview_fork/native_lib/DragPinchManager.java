@@ -11,11 +11,11 @@
  * express or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.tranvanphay.flutter_fullpdfview.native_lib;
+package com.github.dudasmiklos.flutter_fullpdfview.native_lib;
 
 
-import static com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Constants.Pinch.MAXIMUM_ZOOM;
-import static com.github.tranvanphay.flutter_fullpdfview.native_lib.util.Constants.Pinch.MINIMUM_ZOOM;
+import static com.github.dudasmiklos.flutter_fullpdfview.native_lib.util.Constants.Pinch.MAXIMUM_ZOOM;
+import static com.github.dudasmiklos.flutter_fullpdfview.native_lib.util.Constants.Pinch.MINIMUM_ZOOM;
 
 import android.graphics.PointF;
 import android.graphics.RectF;
@@ -25,9 +25,9 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.model.LinkTapEvent;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.scroll.ScrollHandle;
-import com.github.tranvanphay.flutter_fullpdfview.native_lib.util.SnapEdge;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.model.LinkTapEvent;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.scroll.ScrollHandle;
+import com.github.dudasmiklos.flutter_fullpdfview.native_lib.util.SnapEdge;
 import com.shockwave.pdfium.PdfDocument;
 import com.shockwave.pdfium.util.SizeF;
 
