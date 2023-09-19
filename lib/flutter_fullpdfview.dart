@@ -1,10 +1,9 @@
 import 'dart:async';
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 typedef PDFViewCreatedCallback = void Function(PDFViewController controller);
 typedef RenderCallback = void Function(int? pages);
@@ -15,6 +14,7 @@ typedef LinkHandlerCallback = void Function(String? uri);
 typedef ZoomChangedCallback = void Function(double? zoom);
 
 enum bgcolors { BLACK, WHITE, CYAN, BLUE }
+
 enum FitPolicy { WIDTH, HEIGHT, BOTH }
 
 class PDFView extends StatefulWidget {
